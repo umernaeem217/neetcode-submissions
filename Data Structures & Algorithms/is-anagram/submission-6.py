@@ -1,0 +1,31 @@
+from collections import Counter
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        # sort and compare, Time = (n log n), Space: O(1)
+        # s = ''.join(sorted(s))
+        # t = ''.join(sorted(t))
+        # return s == t
+        # hash map, Time: O(n+m), Space (n)
+        # c1 = Counter(s)
+        # c2 = Counter(t)
+        # for key, value in c1.items():
+        #     if key not in c2:
+        #         return False
+        #     if value != c2[key]:
+        #         return False
+        # for key, value in c2.items():
+        #     if key not in c1:
+        #         return False
+        #     if value != c1[key]:
+        #         return False
+        # return True
+        c1 = [0] * 26
+        c2 = [0] * 26
+        for c in s:
+            c1[ord(c)-ord('a')]+=1
+        for c in t:
+            c2[ord(c)-ord('a')]+=1
+        for i in range(len(c1)):
+            if c1[i] != c2[i]:
+                return False
+        return True
